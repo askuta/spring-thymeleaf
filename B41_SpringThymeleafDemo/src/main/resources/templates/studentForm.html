@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Spring Thymeleaf Demo</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<h1>Spring Thymeleaf Demo</h1>
+	<h2>Add Students</h2>
+
+	<form action="#" th:action="@{/saveStudent}" th:object="${student}" method="post">
+
+		<ul>
+			<li th:each="err : ${#fields.errors('id')}" th:text="${err}" />
+			<li th:each="err : ${#fields.errors('name')}" th:text="${err}" />
+		</ul>
+
+
+		<ul>
+			<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+		</ul>
+
+
+		<ul>
+			<li th:each="err : ${#fields.errors('all')}" th:text="${err}" />
+		</ul>
+
+
+		<ul>
+			<li th:each="err : ${#fields.errors('global')}" th:text="${err}" />
+		</ul>
+
+
+		<ul>
+			<li th:errors="*{id}" />
+			<li th:errors="*{name}" />
+		</ul>
+
+
+		<table border="1">
+			<tr>
+				<td><label th:text="#{msg.id}" /></td>
+				<td><input type="number" th:field="*{id}" /></td>
+			</tr>
+			<tr>
+				<td><label th:text="#{msg.name}" /></td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td><label th:text="#{msg.gender}" /></td>
+				<td>
+					<select th:field="*{gender}">
+						<option th:each="gender : ${T(com.epam.thymeleaf.domain.Gender).values()}"
+							th:value="${gender}" th:text="${gender}"/>
+					</select>
+				</td>
+			</tr>
+		</table>
+
+		<br>
+
+		<input type="submit" value="Submit" />
+	</form>
+	
+	<hr>
+
+	<a th:href="@{/index}">Back to the home page</a>
+</body>
+</html>

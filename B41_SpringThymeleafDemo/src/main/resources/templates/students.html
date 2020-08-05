@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Spring Thymeleaf Demo</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<h1>Spring Thymeleaf Demo</h1>
+	<h2>List of Students</h2>
+
+	<table>
+		<tbody>
+			<tr th:each="student: ${students}">
+				<td th:text="${student.id}" />
+				<td th:text="${student.name}" />
+				<td>
+					<span th:if="${student.gender == T(com.epam.thymeleaf.domain.Gender).MALE}" th:text="Male"></span>
+					<span th:unless="${student.gender == T(com.epam.thymeleaf.domain.Gender).MALE}" th:text="Female"></span>
+				</td>
+				<td th:switch="${student.gender}">
+					<span th:case="${T(com.epam.thymeleaf.domain.Gender).MALE}" th:text="Male"></span>
+					<span th:case="${T(com.epam.thymeleaf.domain.Gender).FEMALE}" th:text="Female"></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<hr>
+
+	<a th:href="@{/index}">Back to the home page</a>
+</body>
+</html>

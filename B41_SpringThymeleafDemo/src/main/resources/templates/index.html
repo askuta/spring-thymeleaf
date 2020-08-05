@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Spring Thymeleaf Demo</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<h1>Spring Thymeleaf Demo</h1>
+	<h2>
+		<span th:text="#{welcome.message}" />
+	</h2>
+
+	<a th:href="@{/students}"> Students </a>
+	<br>
+	<a th:href="@{/studentForm}"> Save Student </a>
+
+</body>
+</html>
