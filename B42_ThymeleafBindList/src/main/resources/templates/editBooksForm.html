@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Thymeleaf Bind List Demo</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<h1>Thymeleaf Bind List Demo</h1>
+	<h2>Edit List of Books</h2>
+
+	<form action="#" th:action="@{/editBooks}" th:object="${form}" method="post">
+		<fieldset>
+			<input type="submit" id="submitButton" th:value="Save" />
+			<input type="reset" id="resetButton" name="reset" th:value="Reset" />
+			<table>
+				<thead>
+					<tr> Title </tr>
+					<tr> Author </tr>
+				</thead>
+				<tbody>
+					<tr th:each="book, itemStat : ${form.books}">
+						<td>
+							<input hidden th:name="|books[${itemStat.index}].id|" th:value="${book.getId()}"/>
+						</td>
+						<td>
+							<input th:name="|books[${itemStat.index}].title|" th:value="${book.getTitle()}"/>
+						</td>
+						<td>
+							<input th:name="|books[${itemStat.index}].author|" th:value="${book.getAuthor()}"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

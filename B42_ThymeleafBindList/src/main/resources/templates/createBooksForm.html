@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Thymeleaf Bind List Demo</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<h1>Thymeleaf Bind List Demo</h1>
+	<h2>Create List of Books</h2>
+
+	<form action="#" th:action="@{/saveBooks}" th:object="${form}" method="post">
+		<fieldset>
+			<input type="submit" id="submitButton" th:value="Save" />
+			<input type="reset" id="resetButton" name="reset" th:value="Reset" />
+			<table>
+				<thead>
+					<tr> Title </tr>
+					<tr> Author </tr>
+				</thead>
+				<tbody>
+					<tr th:each="book, itemStat : *{books}">
+						<td><input th:field="*{books[__${itemStat.index}__].title}" /></td>
+						<td><input th:field="*{books[__${itemStat.index}__].author}" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>
