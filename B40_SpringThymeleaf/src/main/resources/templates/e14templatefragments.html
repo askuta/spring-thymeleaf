@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Thymeleaf tutorial: exercise 14</title>
+	<link rel="stylesheet" href="../css/main-static.css" th:href="@{/css/main.css}" />
+	<meta charset="utf-8" />
+</head>
+<body>
+	<h1>Thymeleaf tutorial - Solution for exercise 14: same-template fragments</h1>
+	<div th:fragment="banner" id="bannerElement">
+		<div class="banner">
+			<img src="../../../images/logo.png" th:src="@{/images/logo.png}" alt="Thymeleaf logo" />
+			<span>The Thymeleaf tutorial</span>
+		</div>
+	</div>
+
+	<h2>Product information</h2>
+	<dl>
+		<dt>Product name</dt>
+		<dd th:text="${product.description}">Red chair</dd>
+
+		<dt>Product price</dt>
+		<dd th:text="${product.price}">350</dd>
+
+		<dt>Product available from</dt>
+		<dd th:text="${product.availableFrom}">28-Jun-2013</dd>
+	</dl>
+
+	<div th:include="this :: banner">Banner</div>
+
+	<h2>Customer information</h2>
+	<dl>
+		<dt>First name</dt>
+		<dd th:text="${customer.firstName}">John</dd>
+
+		<dt>Last name</dt>
+		<dd th:text="${customer.lastName}">Smith</dd>
+
+		<dt>Genre</dt>
+		<dd th:text="${customer.gender?.description}">Male</dd>
+
+		<dt>Payment method</dt>
+		<dd th:text="${customer.paymentMethod?.description}">Credit card</dd>
+
+		<dt>Balance</dt>
+		<dd th:text="'$' + ${customer.balance}">$350</dd>
+	</dl>
+
+	<div th:include="this :: [//div[@id='bannerElement']]">Banner</div>
+
+	<hr>
+
+	<a th:href="@{/index}">Back to the home page</a>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Thymeleaf tutorial: exercise 11</title>
+	<link rel="stylesheet" href="../css/main-static.css" th:href="@{/css/main.css}" />
+	<meta charset="utf-8" />
+</head>
+<body>
+	<h1>Thymeleaf tutorial - Solution for exercise 11: links</h1>
+	<h2>Product actions</h2>
+	<ul>
+		<li><a href="#" th:href="@{/exercise11/product.html(action='view')}">View product (the link does not work!)</a></li>
+		<li><a href="#" th:href="@{/exercise11/product.html(action='edit')}">Edit product (the link does not work!)</a></li>
+	</ul>
+
+	<hr>
+
+	<a th:href="@{/index}">Back to the home page</a>
+</body>
+</html>
