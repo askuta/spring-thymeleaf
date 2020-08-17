@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+  <link href="../../static/css/custom.css" th:href="@{/css/custom.css}" rel="stylesheet" media="screen" />
+</head>
+
+<body>
+  <th:block th:fragment="footer-user">
+    <footer class="footer">
+      <div class="container">
+        &copy; <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2020</span>
+        <span>Thymeleaf Layouts</span>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+  </th:block>
+
+
+  <th:block th:fragment="footer-admin">
+    <footer class="footer">
+      <div class="container">
+        &copy; <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2020</span>
+        <span>Thymeleaf Layouts (Admin)</span><span th:text="${@environment.getProperty('app.version')}"></span>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+  </th:block>
+</body>
+
+</html>

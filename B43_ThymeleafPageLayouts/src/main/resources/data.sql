@@ -1,0 +1,14 @@
+/*
+Passwords:
+- admin: admin
+- user: user
+
+Online bcrypt generator:
+- https://bcrypt-generator.com/
+*/
+
+INSERT INTO USER (USERNAME, PASSWORD) VALUES ('admin', '$2y$11$t4jB8liodIAfZt6UkXyLIufgjnmOsMUn8miYgQTZ3KhyXa6rb3.De');
+INSERT INTO USER (USERNAME, PASSWORD) VALUES ('user', '$2y$11$ki/MFNOtAY3BiLupxd3ghO73AAZn.DwNOk2MiQgL5TlGKNkP/vJca');
+INSERT INTO AUTH_USER_GROUP (USERNAME, AUTH_GROUP) VALUES('admin', 'USER');
+INSERT INTO AUTH_USER_GROUP (USERNAME, AUTH_GROUP) VALUES('admin', 'ADMIN');
+INSERT INTO AUTH_USER_GROUP (USERNAME, AUTH_GROUP) VALUES('user', 'USER');
